@@ -21,7 +21,8 @@ public class ProviderEntity {
     @Column(name = "PROVIDERID")
     private Long providerId;
 
-    @Column(name = "PROVIDERNAME")
+    //No se puede poner un valor de nulo en este campo
+    @Column(name = "PROVIDERNAME", nullable = false)
     private String providerName;
 
     @Column(name = "PROVIDERPHONE")
@@ -36,7 +37,8 @@ public class ProviderEntity {
     @Column(name = "PROVIDERCODE")
     private String providerCode;
 
-    @Column(name = "PROVIDERSTATUS")
+    //No se puede poner un valor de nulo en este campo
+    @Column(name = "PROVIDERSTATUS", nullable = false)
     private Long providerStatus;
 
     @Column(name = "PROVIDERCOMMENTS")
