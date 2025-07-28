@@ -1,9 +1,6 @@
 package ProyectoModulo_MarioVasquez_20210050.MarioVasquez_20210050.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,10 +16,13 @@ public class ProviderEntity {
 
     @Id
     @Column(name = "PROVIDERID")
+    //Secuencia que genera el id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "proveedor_sequencia")
+    @SequenceGenerator(name = "proveedor_sequencia", sequenceName = "seq_provider", allocationSize = 1)
     private Long providerId;
 
     //No se puede poner un valor de nulo en este campo
-    @Column(name = "PROVIDERNAME", nullable = false)
+    @Column(name = "PROVIDERNAME", nullable = false, unique = true)
     private String providerName;
 
     @Column(name = "PROVIDERPHONE")
@@ -34,12 +34,11 @@ public class ProviderEntity {
     @Column(name = "PROVIDEREMAIL")
     private String providerEmail;
 
-    @Column(name = "PROVIDERCODE")
+    @Column(name = "PROVIDERCODE", unique = true)
     private String providerCode;
 
-    //No se puede poner un valor de nulo en este campo
-    @Column(name = "PROVIDERSTATUS", nullable = false)
-    private Long providerStatus;
+    @Column(name = "PROVIDERSTATUS")
+    private Boolean providerStatus;
 
     @Column(name = "PROVIDERCOMMENTS")
     private String providerComments;

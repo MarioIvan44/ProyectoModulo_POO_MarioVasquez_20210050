@@ -1,6 +1,5 @@
 package ProyectoModulo_MarioVasquez_20210050.MarioVasquez_20210050.Models.DTO;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -27,15 +26,13 @@ public class DTOProvider {
     @Size(max = 35, message = "El máximo de caracteres para el código del proveedor es de 35", groups = {OnCreate.class, OnUpdate.class, OnPatch.class})
     private String providerCode;
 
-    @Positive(message = "El estatus del proveedor no puede ser negativo", groups = {OnCreate.class, OnUpdate.class, OnPatch.class})
-    @Min(value = 1, message = "El mínimo de estatus del proveedor es 1", groups = {OnCreate.class, OnUpdate.class, OnPatch.class})
-    @NotBlank(message = "El campo 'providerStatus' es obligatorio", groups = {OnCreate.class, OnUpdate.class})
-    private Long providerStatus;
+    private Boolean providerStatus;
 
     @Size(max = 128, message = "El máximo de caracteres para los comentarios del proveedor es de 256", groups = {OnCreate.class, OnUpdate.class, OnPatch.class})
     private String providerComments;
 
-    public interface OnCreate{}
-    public interface OnUpdate{}
-    public interface OnPatch{}
+    //Grupos de validación que solo se aplican en determinados métodos HTTP
+    public interface OnCreate{} //POST
+    public interface OnUpdate{} //PUT
+    public interface OnPatch{} //PATCH
 }
